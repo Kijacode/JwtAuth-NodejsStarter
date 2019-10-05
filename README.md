@@ -14,6 +14,9 @@ JWT-Authorization Starter template for nodejs and mongodb
 
 ## contributor 😎
   **Email**: kijadanford@gmail.com
+
+## How can you support ?
+Why not star this repo? It will surely motivate and push me to innovate for more community solutions.
   
 ## Let Be Friends
 
