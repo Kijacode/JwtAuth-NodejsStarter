@@ -2,19 +2,27 @@
 
 // const dotenv = require("dotenv");
 // dotenv.config();
-const mongoose = require('mongoose');
+import { connect } from "mongoose";
+const dotenv = require('dotenv'); 
+dotenv.config()
 
-console.log('db is here');
-var con = mongoose.connect(
-	"mongodb+srv://Kijacode:7864drftgh4536cxvds33@auth-hqhzc.mongodb.net/test?retryWrites=true&w=majority",
-	{ userNewUrlParser: true },
-	() => console.log('connect to db')
-).then( async () =>{
-    await console.log("Database havebeing connected");
-    }).catch( (err) =>{
-       console.log("Unable to connect to MongoDb");
-       console.log(err);
-    });
-    
+console.log("db is here");
+var con = connect(
+  process.env.DB_CONNECT,
+  err => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("connect to db");
+    }
+  }
+)
+  .then(async () => {
+    console.log("Database has been connected");
+  })
+  .catch(err => {
+    console.log("Unable to connect to MongoDb");
+    console.log(err);
+  });
 
-module.exports = con;
+export default con;
