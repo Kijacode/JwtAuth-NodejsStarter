@@ -1,6 +1,8 @@
+
 import express from "express";
 import verify from "../db/verifyToken";
 const router = express.Router();
+
 
 router.get("/", verify, (req, res) => {
   res.json({
@@ -10,3 +12,6 @@ router.get("/", verify, (req, res) => {
     }
   });
 });
+
+module.exports = router;
+
