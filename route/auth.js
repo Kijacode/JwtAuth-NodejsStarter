@@ -1,23 +1,23 @@
-const express = require('express');
+import { Router } from 'express';
 const TOKEN = "JLKJLAJFLAJLAAL";
 // const AdminController = require("../controllers/admin");
-const jwt = require("jsonwebtoken");
-const router = express.Router();
-const User = require('../Model/User');
-const { registrationValidation, loginValidation } = require('../db/validitation');
-const bcrypt = require('bcryptjs');
+import { sign } from "jsonwebtoken";
+const router = Router();
+import User, { findOne } from '../Model/User';
+import { registrationValidation, loginValidation } from '../db/validitation';
+import { genSalt, hash, compare } from 'bcryptjs';
 
 router.post('/register', async (req, res) => {
 	const { error } = registrationValidation(req.body);
 
 	if (error) return res.status(400).send(error.details[0].message);
 
-	const emailExist = await User.findOne({ email: req.body.email });
+	const emailExist = await findOne({ email: req.body.email });
 	if (emailExist) return res.status(400).send('Emain alreald exists');
 
 	//HASH PASSWORD
-	const salt = await bcrypt.genSalt(10);
-	const hashPassword = await bcrypt.hash(req.body.password, salt);
+	const salt = await genSalt(10);
+	const hashPassword = await hash(req.body.password, salt);
 
 	const user = new User({
 		name: req.body.name,
@@ -42,12 +42,12 @@ router.post('/login', async (req, res) => {
   if (error) return res.status(400).send(error.details[0].message);
   
   //check if user exists
-  const user= await User.findOne({ email: req.body.email });
+  const user= await findOne({ email: req.body.email });
   if (!user) return res.status(400).send('Email or Password not exist');
   
   //PASSWORD IS CORRECT
 
-  const validPassword = await bcrypt.compare(req.body.password,user.password);
+  const validPassword = await compare(req.body.password,user.password);
 
   if(!validPassword) return res.status(400).send("Email or Password not exist");
 
@@ -55,14 +55,14 @@ router.post('/login', async (req, res) => {
 
   //create and assign the token
 
-  const token = jwt.sign({_id:user.__id},TOKEN);
+  const token = sign({_id:user.__id},TOKEN);
 
   res.header("auth_token",token).send(token);
 
   // res.send("Log in ");
 });
 
-module.exports = router;
+export default router;
 
 //Kijacode
 //7864drftgh4536cxvds33
