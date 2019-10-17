@@ -1,15 +1,16 @@
-import express from "express";
-import { json as _json } from "body-parser";
-// import postRoute from "./route/posts";
-import con from "./db/database";
-// import authenticat from "./route/auth";
+const express = require('express');
 const app = express();
-app.use(_json());
+const bodyParser = require('body-parser');
+const postRoute = require("./route/posts");
+const con = require("./db/database");
+const authenticat = require('./route/auth');
+app.use(bodyParser.json());
+
 
 con;
 
 app.use(express.json());
-app.use("/api/user", require('./route/auth'));
-app.use("/api/posts", require('./route/posts'));
+app.use('/api/user', authenticat);
+app.use('/api/posts',postRoute);
 
-export default app;
+module.exports = app;

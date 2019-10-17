@@ -1,9 +1,9 @@
-import { createServer } from "http";
-import app, { set } from "../app";
+const http = require("http");
+const app = require("../app");
 
-set("port", process.env.PORT || 7000);
+app.set("port", process.env.PORT || 7000);
 
-const server = createServer(app);
+const server = http.createServer(app);
 
 server.on("listening", function() {
     console.log("ok, server is running");

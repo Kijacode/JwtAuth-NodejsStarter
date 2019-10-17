@@ -1,4 +1,4 @@
-import { verify } from "jsonwebtoken";
+const jwt = require("jsonwebtoken");
 const TOKEN = "JLKJLAJFLAJLAAL";
 
 
@@ -12,7 +12,7 @@ function  auth(req,res,next) {
 
   try
   {
-     const verified = verify(token,TOKEN);
+     const verified = jwt.verify(token,TOKEN);
      req.user = verified;
      next();
   }catch(err)
@@ -22,4 +22,4 @@ function  auth(req,res,next) {
 
 }
 
-export default auth;
+module.exports = auth;
