@@ -1,17 +1,11 @@
-
-import express from "express";
-import verify from "../db/verifyToken";
+const express = require("express");
 const router = express.Router();
+const verify =  require("../db/verifyToken");
 
+router.get('/',verify, (req, res) => {
 
-router.get("/", verify, (req, res) => {
-  res.json({
-    posts: {
-      title: "my first posts",
-      descrimination: "random data should not be accessed easily"
-    }
-  });
+     res.json({posts:{title :'my first posts',descrimination:"random data should not be accessed easily"},});
+
 });
 
 module.exports = router;
-
