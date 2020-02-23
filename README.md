@@ -16,7 +16,9 @@ JWT-Authorization Starter template for nodejs and mongodb
 3. Joi (for validation)
 
 ## contributor 😎
- #### **Email**: kijadanford@gmail.com
+ 
+ <a href="https://sourcerer.io/kijacode"><img src="https://avatars3.githubusercontent.com/u/43994719?v=4" height="50px" width="50px" alt=""/></a>
+
 
 
 ## How can you support ?
