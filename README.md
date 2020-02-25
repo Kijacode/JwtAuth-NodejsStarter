@@ -7,6 +7,9 @@ JWT-Authorization Starter template for nodejs and mongodb
 -clone the project by using
   **git clone <project url>**
 -Run **npm install**
+ 
+ - OR USE **npm i @kijacode/jwt_mongo_starter**
+ 
 
 -Change Mongodb string(url) to own your own database (**optional**)
 
