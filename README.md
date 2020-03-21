@@ -2,6 +2,8 @@
 
 # [![Build Status](https://travis-ci.org/Kijacode/JwtAuth-NodejsStarter.svg?branch=master)](https://travis-ci.org/Kijacode/JwtAuth-NodejsStarter)
 
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/T6T01IFS6)
+
 JWT-Authorization Starter template for nodejs and mongodb
 ## Get started
 -clone the project by using
